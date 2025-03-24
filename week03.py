@@ -1,4 +1,5 @@
-import array
-arr = array.array('f', [99, 0, -7, 0, 16])
-for i in range(len(arr)):
-    print(f"{arr[i]:5} {id(arr[i])}")
+groups = ['HOT','Seventeen','BlackPink','NJZ']
+#ratings = [1,2,4,3,100]
+ratings = [1,2,4,3]
+group_rating = list(zip(groups,ratings))
+print(group_rating)
