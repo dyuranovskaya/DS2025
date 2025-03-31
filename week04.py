@@ -1,3 +1,4 @@
+import random
 class Node:
     def __init__(self, data, link=None):
         self.data = data
@@ -40,3 +41,9 @@ ll.append(10)
 print(ll.serch(99))
 print(ll.serch(18))
 print(ll)
+for _ in range(20):
+
+    ll.append(random.randint(1,30))
+    print(ll)
+
+    print(ll.serch(7))
