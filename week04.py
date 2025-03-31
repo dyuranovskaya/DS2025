@@ -20,8 +20,8 @@ class Linkedlist:
         current = self.head
         out_texts = ""
         while current is not None:
-            # out_texts = out_texts + str(current.data) + "->"
-            out_texts = out_texts + f"{current.data}->"
+            out_texts = out_texts + str(current.data) + "->"
+            # out_texts = out_texts + f"{current.data}->"
             current = current.link
         return out_texts + "END"
 
