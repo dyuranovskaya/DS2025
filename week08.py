@@ -1,23 +1,22 @@
 def pre_order(node):
-    if node is None:
-        return
-    pre_order(node.left)
-    pre_order(node.right)
-    print(node.data, end='-')
+    if node:
+        pre_order(node.left)
+        pre_order(node.right)
+        print(node.data, end='-')
 
 def in_order(node):
-    if node is None:
-        return
-    in_order(node.left)
-    in_order(node.right)
-    print(node.data, end='-')
+    if node:
+        in_order(node.left)
+        in_order(node.right)
+        print(node.data, end='-')
+
+
 
 def post_order(node):
-    if node is None:
-        return
-    post_order(node.left)
-    post_order(node.right)
-    print(node.data, end='-')
+    if node:
+        post_order(node.left)
+        post_order(node.right)
+        print(node.data, end='-')
 class TreeNode:
     def __init__(self):
         self.left = None
