@@ -11,7 +11,6 @@ def pre_order(node):
     pre_order(node.left)
     pre_order(node.right)
 
-
 def in_order(node):
     if node is None:
         return
@@ -19,22 +18,20 @@ def in_order(node):
     print(node.data, end='->')
     in_order(node.right)
 
-
 def post_order(node):
     if node:
         post_order(node.left)
         post_order(node.right)
         print(node.data, end='->')
 
-
-def insert(root, value):
+def insert(node, value):
     new_node = TreeNode()
     new_node.data = value
 
-    if root is None:  # 첫 번째 노드 처리
+    if node is None:  # 첫 번째 노드 처리
         return new_node
 
-    current = root
+    current = node
     while True:
         if value < current.data:
             if current.left is None:
@@ -46,31 +43,49 @@ def insert(root, value):
                 current.right = new_node
                 break
             current = current.right  # move
-    return root
-
+    return node
 
 def search(find_number):
-
     current = root
     while True:
+        if current is None:
+            return False
         if find_number == current.data:
-            print(f"{find_number}을(를) 찾았습니다")
-            break
+            return True
         elif find_number < current.data:
-            if current.left is None:
-                print(f"{find_number}이(가) 존재하지 않습니다")
-                break
             current = current.left
         else:
-            if current.right is None:
-                print(f"{find_number}이(가) 존재하지 않습니다")
-                break
             current = current.right
+
+def delete(node, value):
+    if node is None:
+        return None
+    if value < node.data:
+        node.left = delete(node.left, value)
+    elif value > node.data:
+        node.right = delete(node.right, value)
+    else:
+        if node.left is None:
+            return node.right
+        elif node.right is None:
+            return node.left
+        min_larger_node = node.right
+        while min_larger_node.left:
+            min_larger_node = min_larger_node.left  #move
+        node.data = min_larger_node.data
+        node.right = delete(node.right,min_larger_node.data)
+    return node
+
+
+    #     temp = node.right
+    #     while temp.left:
+    #         temp = temp.left
+    #     node.data = temp.data
+    #     node.right = delete(node.right, temp.data)
 
 
 if __name__ == "__main__":
     numbers = [10, 15, 8, 3, 9]
-    # numbers = [10, 15, 8, 3, 9, 1, 7, 100]
     root = None
 
     for number in numbers:
@@ -78,15 +93,25 @@ if __name__ == "__main__":
 
     print("BST 구성 완료")
 
-    post_order(root)  # 3->9->8->15->10
+    post_order(root)
     print()
-    in_order(root)  # 3->8->9->10->15
+    in_order(root)
     print()
-    pre_order(root)  # 10->8->3->9->15
+    pre_order(root)
     print()
 
-    number = int(input("찾는 값 입력 : "))  # 입력 부분을 search함수에서 제거
-    if search(number):
-        print(f"{number}을(를) 찾았습니다")
+    find_number = int(input("찾는 값 입력 : "))
+    if search(find_number):
+        print(f"{find_number}을(를) 찾았습니다")
     else:
-        print(f"{number}이(가) 존재하지 않습니다")
+        print(f"{find_number}이(가) 존재하지 않습니다")
+
+    delete_number = int(input("제거할 값 입력 : "))
+    root = delete(root, delete_number)
+
+    post_order(root)
+    print()
+    in_order(root)
+    print()
+    pre_order(root)
+    print()
