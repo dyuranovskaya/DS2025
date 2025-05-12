@@ -89,4 +89,4 @@ if __name__ == "__main__":
     if search(number):
         print(f"{number}을(를) 찾았습니다")
     else:
-        print(f"{number}이(가) 찾았습니다")
+        print(f"{number}이(가) 존재하지 않습니다")
