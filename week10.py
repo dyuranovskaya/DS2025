@@ -86,4 +86,7 @@ if __name__ == "__main__":
     print()
 
     number = int(input("찾는 값 입력 : "))  # 입력 부분을 search함수에서 제거
-    search(number)
+    if search(number):
+        print(f"{number}을(를) 찾았습니다")
+    else:
+        print(f"{number}이(가) 찾았습니다")
