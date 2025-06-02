@@ -67,16 +67,11 @@ for cost,s,e in edges:
 		mst_cost = mst_cost+cost
 mst_graph = Graph(graph_size)
 for w,s,e in mst_edges:
-	mst_graph.graph[s][e] = w
-	mst_graph.graph[e][s] = w
+	mst_graph.graph[s][e] = cost
+	mst_graph.graph[e][s] = cost
 print('최소 비용의 도로 연결도')
 print_graph(mst_graph)
-
-total_cost = 0
-for i in range(graph_size):
-	for k in range(graph_size):
-		if g1.graph[i][k] != 0:
-			total_cost = total_cost + g1.graph[i][k]
-
-
 print(f"최소 비용 :  {mst_cost}")
+print(f"최소 비용 :")
+for cost,s,e in mst_edges:
+	print(f"{cities[s]}---{cities[e]}:{cost}")
